@@ -16,7 +16,6 @@ class FavouritesListItem(models.Model):
     # Links items to user's favourites list
     favourites = models.ForeignKey(FavouritesList, on_delete=models.CASCADE, related_name='favourites_list')
     product = models.OneToOneField(Product, on_delete=models.CASCADE, related_name='favourite_products')
-    added_on = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.product.name
