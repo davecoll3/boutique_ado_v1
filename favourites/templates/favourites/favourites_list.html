@@ -10,32 +10,33 @@
 {% endblock %}
 
 {% block content %}
-<div class="overlay"></div>
-{% if favourites_list %}
-    <div class="container">
-        <div class="row">
-            <h1>My Favourites List:</h1>
+    <div class="overlay"></div>
+
+    {% if favourites_list %}
+        <div class="container">
+            <div class="row">
+                <h1>My Favourites List:</h1>
+            </div>
+            <div class="row">
+            </div>
+            <div class="row">
+                <table class="table table-sm table-borderless table-striped w-100">
+                    {% for product in products %}
+                        <tr>
+                            <td>
+                                <a href="{% url 'product_detail' product.id %}">{{ product.name }}</a>
+                                @ {{ product.price }} each.
+                            </td>
+                            {% for date in dates %}
+                                <td>{{ date.added_on }}</td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                    
+                </table>
+            </div>
         </div>
-        <div class="row">
-        </div>
-        <div class="row">
-            <table class="table table-sm table-borderless table-striped w-100">
-                {% for product in products %}
-                    <tr>
-                        <td>
-                            <a href="{% url 'product_detail' product.id %}">{{ product.name }}</a>
-                            @ {{ product.price }} each.
-                        </td>
-                        {% for date in dates %}
-                            <td>{{ date.added_on }}</td>
-                        {% endfor %}
-                    </tr>
-                {% endfor %}
-                
-            </table>
-        </div>
-    </div>
-{% else %}
-    <h1>Your Wishlist is empty.</h1>
-{% endif %}
+    {% else %}
+        <h1>Your Favourites List is empty.</h1>
+    {% endif %}
 {% endblock %}
