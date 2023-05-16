@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Recipes
+from .models import Recipe
 
 
 class RecipesAdmin(admin.ModelAdmin):
@@ -13,4 +13,4 @@ class RecipesAdmin(admin.ModelAdmin):
     ordering = ('name',)
 
 
-admin.site.register(Recipes, RecipesAdmin)
+admin.site.register(Recipe, RecipesAdmin)

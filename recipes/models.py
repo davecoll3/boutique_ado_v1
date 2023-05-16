@@ -4,7 +4,7 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 from products.models import Product
 
 
-class Recipes(models.Model):
+class Recipe(models.Model):
 
     class Meta:
         verbose_name_plural = 'Recipes'
@@ -48,6 +48,8 @@ class Recipes(models.Model):
     brew_time_mins = models.DecimalField(max_digits=4, decimal_places=2)
     products = models.ManyToManyField(Product)
     method = models.TextField()
+    image_url = models.URLField(max_length=1024, null=True, blank=True)
+    image = models.ImageField(null=True, blank=True)
 
     def __str__(self):
         return self.name
