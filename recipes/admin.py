@@ -5,8 +5,9 @@ from .models import Recipes
 class RecipesAdmin(admin.ModelAdmin):
     list_display = (
         'name',
+        'coffee_qty_g',
         'grind_size',
-        'brew_time',
+        'brew_time_mins',
     )
 
     ordering = ('name',)
