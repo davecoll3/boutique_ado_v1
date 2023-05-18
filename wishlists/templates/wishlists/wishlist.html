@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+<div class="overlay"></div>
+
+<div class="container">
+    <div class="row">
+        <h1>My Wishlist:</h1>
+    </div>
+    <div class="row">
+    </div>
+    <div class="row">
+        <table class="table table-sm table-borderless table-striped w-100">
+            {% for product in wishlist.products.all %}
+            <tr>
+                <td>
+                    <a href="{% url 'product_detail' product.id %}">{{ product.name }}</a>
+                    @ {{ product.price }} each.</a>
+                </td>
+                <td>
+                    <small class="ml-3">
+                        <a class="text-danger" href="{% url 'remove_from_wishlist' product.id %}">Remove</a>
+                    </small>
+                </td>
+            </tr>
+            {% empty %}
+            <div class="row justify-content-center">
+                <!-- Wishlist Page "if" empty -->
+                <div class="text-center mt-3">
+                    <h3 class="font-weight-bold text-uppercase">You have no items in your wishlist</h3>
+                    <a class="btn btn-light btn-lg mt-5" href="{% url 'products' %}">
+                        <span class="icon">
+                            <i class="text-info fas fa-chevron-left"></i>
+                        </span>
+                        <span class="text-uppercase font-weight-bold text-info">Keep Shopping</span>
+                    </a>
+                </div>
+                </div>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+{% endblock %}

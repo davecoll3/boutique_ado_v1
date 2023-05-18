@@ -94,6 +94,12 @@
                             </div>
 
                             <div class="col{% if s %}-12 mt-2{% endif %}">
+                                <a class="btn btn-info btn-width mt-3" href="{% url 'add_to_wishlist' product.id %}">
+                                    <span class="text-uppercase">Add to wishlist</span>
+                                    <span class="icon">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span> 
+                                </a>
                                 <a href="{% url 'products' %}" class="btn btn-outline-black rounded-0 mt-5">
                                     <span class="icon">
                                         <i class="fas fa-chevron-left"></i>
